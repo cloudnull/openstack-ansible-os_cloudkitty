@@ -31,12 +31,11 @@
 - include: cloudkitty_domain_setup.yml
   when: >
     inventory_hostname == groups['cloudkitty_all'][0]
+
 - include: cloudkitty_db_setup.yml
   when: >
     inventory_hostname == groups['cloudkitty_all'][0]
-- include: cloudkitty_service_setup.yml
-  when: >
-    inventory_hostname == groups['cloudkitty_all'][0]
+
 - include: cloudkitty_upstart_init.yml
 
 - name: Flush handlers
