@@ -43,7 +43,8 @@ cloudkitty_venv_enabled: true
 #  system path used when the installing.
 cloudkitty_bin: "{{ cloudkitty_venv_bin }}"
 
-
+cloudkitty_requires_pip_packages:
+  - virtualenv
 # The messaging driver to use, defaults to rabbit. Other drivers
 # include qpid and zmq. (string value)
 cloudkitty_rpc_backend: rabbit
