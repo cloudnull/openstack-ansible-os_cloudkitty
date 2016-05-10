@@ -19,6 +19,8 @@ cloudkitty_system_group_name: cloudkitty
 cloudkitty_system_user_name: cloudkitty
 cloudkitty_system_comment: meow
 cloudkitty_system_shell: /bin/false
+cloudkitty_venv_tag: untagged
+cloudkitty_venv_dir: "/openstack/venvs/cloudkitty-{{ cloudkitty_venv_tag }}"
 cloudkitty_git_repo: https://github.com/openstack/cloudkitty.git
 cloudkitty_git_install_branch: master
 cloudkitty_requirements_git_repo: https://git.openstack.org/openstack/requirements
@@ -31,8 +33,7 @@ cloudkitty_pip_packages:
   - "{{ cloudkitty_developer_constraints }}"
 
 # Name of the virtual env to deploy into
-cloudkitty_venv_tag: untagged
-cloudkitty_venv_bin: "/openstack/venvs/cloudkitty-{{ cloudkitty_venv_tag }}/bin"
+cloudkitty_venv_bin: "{{ cloudkitty_venv_dir }}/bin"
 
 # Set this to enable or disable installing in a venv
 cloudkitty_venv_enabled: true
