@@ -31,6 +31,8 @@ cloudkitty_developer_constraints:
 
 cloudkitty_pip_packages:
   - "{{ cloudkitty_developer_constraints }}"
+  - tooz
+  - msgpack-python
 
 # Name of the virtual env to deploy into
 cloudkitty_venv_bin: "{{ cloudkitty_venv_dir }}/bin"
