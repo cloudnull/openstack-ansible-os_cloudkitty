@@ -26,8 +26,14 @@ cloudkitty_git_install_branch: master
 cloudkitty_requirements_git_repo: https://git.openstack.org/openstack/requirements
 cloudkitty_requirements_git_install_branch: master
 cloudkitty_developer_mode: false
+cloudkitty_notification_topics: openstack
+cloudkitty_services: nova
+cloudkitty_collector: ceilometer
+cloudkitty_cloudkitty_conf_overrides: {}
+cloudkitty_policy_overrides: {}
+cloudkitty_api_paste_ini_overrides: {}
 cloudkitty_developer_constraints:
-  - "git+{{ cloudkitty_git_repo }}@{{ cloudkitty_git_install_branch }}#egg=cloudkitty"
+  "git+{{ cloudkitty_git_repo }}@{{ cloudkitty_git_install_branch }}#egg=cloudkitty"
 
 cloudkitty_pip_packages:
   - "{{ cloudkitty_developer_constraints }}"
@@ -47,6 +53,7 @@ cloudkitty_bin: "{{ cloudkitty_venv_bin }}"
 
 cloudkitty_requires_pip_packages:
   - virtualenv
+  - python-keystoneclient
 # The messaging driver to use, defaults to rabbit. Other drivers
 # include qpid and zmq. (string value)
 cloudkitty_rpc_backend: rabbit

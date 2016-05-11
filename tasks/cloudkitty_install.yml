@@ -29,8 +29,8 @@
     - "{{ cloudkitty_pip_packages }}"
   when:
     - cloudkitty_venv_enabled | bool
-  notify:
-    - Restart cloudkitty api
+#  notify:
+#    - Restart cloudkitty api
   tags:
     - cloudkitty-install
     - cloudkitty-install-pip-packages
@@ -47,8 +47,8 @@
     - "{{ cloudkitty_pip_packages }}"
   when:
     - not cloudkitty_venv_enabled | bool
-  notify:
-    - Restart cloudkitty api
+#  notify:
+#    - Restart cloudkitty api
   tags:
     - cloudkitty-install
     - cloudkitty-install-pip-packages
