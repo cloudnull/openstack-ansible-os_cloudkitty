@@ -39,6 +39,8 @@ cloudkitty_collector: ceilometer
 cloudkitty_project_name: admin
 cloudkitty_project_domain_name: Default
 cloudkitty_service_project_domain_id: default
+cloudkitty_service_project_name: "service"
+
 cloudkitty_user_domain_name: Default
 cloudkitty_keystone_auth_plugin: password
 cloudkitty_keystone_trustee_auth_plugin: v2password
