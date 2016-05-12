@@ -34,7 +34,7 @@ cloudkitty_requirements_git_install_branch: master
 
 cloudkitty_developer_mode: false
 cloudkitty_notification_topics: openstack
-cloudkitty_services: nova
+cloudkitty_services: compute
 cloudkitty_collector: ceilometer
 cloudkitty_project_name: admin
 cloudkitty_project_domain_name: Default
