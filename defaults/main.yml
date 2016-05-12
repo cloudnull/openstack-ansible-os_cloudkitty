@@ -29,9 +29,35 @@ cloudkitty_developer_mode: false
 cloudkitty_notification_topics: openstack
 cloudkitty_services: nova
 cloudkitty_collector: ceilometer
+cloudkitty_project_name: admin
+cloudkitty_project_domain_name: Default
+cloudkitty_user_domain_name: Default
+cloudkitty_domain_admin_password: secrete
+cloudkitty_domain_admin: stack_domain_admin
+
+cloudkitty_galera_database: cloudkitty
+cloudkitty_galera_user: cloudkitty
+cloudkitty_galera_password: secrete
+
+cloudkitty_service_port: 8089
+cloudkitty_service_proto: http
+cloudkitty_service_publicuri_proto: "{{ openstack_service_publicuri_proto | default(cloudkitty_service_proto) }}"
+cloudkitty_service_adminuri_proto: "{{ openstack_service_adminuri_proto | default(cloudkitty_service_proto) }}"
+cloudkitty_service_internaluri_proto: "{{ openstack_service_internaluri_proto | default(cloudkitty_service_proto) }}"
+cloudkitty_service_type: orchestration
+cloudkitty_service_publicuri: "{{ cloudkitty_service_publicuri_proto }}://{{ external_lb_vip_address }}:{{ cloudkitty_service_port }}"
+cloudkitty_service_publicurl: "{{ cloudkitty_service_publicuri }}/v1/%(tenant_id)s"
+cloudkitty_service_adminuri: "{{ cloudkitty_service_adminuri_proto }}://{{ internal_lb_vip_address }}:{{ cloudkitty_service_port }}"
+cloudkitty_service_adminurl: "{{ cloudkitty_service_adminuri }}/v1/%(tenant_id)s"
+cloudkitty_service_internaluri: "{{ cloudkitty_service_internaluri_proto }}://{{ internal_lb_vip_address }}:{{ cloudkitty_service_port }}"
+cloudkitty_service_internalurl: "{{ cloudkitty_service_internaluri }}/v1/%(tenant_id)s"
+cloudkitty_service_program_name: cloudkitty-api
+
+
 cloudkitty_cloudkitty_conf_overrides: {}
 cloudkitty_policy_overrides: {}
 cloudkitty_api_paste_ini_overrides: {}
+cloudkitty_service_names: []
 cloudkitty_developer_constraints:
   "git+{{ cloudkitty_git_repo }}@{{ cloudkitty_git_install_branch }}#egg=cloudkitty"
 
@@ -39,6 +65,19 @@ cloudkitty_pip_packages:
   - "{{ cloudkitty_developer_constraints }}"
   - tooz
   - msgpack-python
+  - keystonemiddleware
+  - PyMySQL
+  - python-memcached
+  - pycrypto
+  - python-ceilometerclient
+  - python-cinderclient
+  - python-glanceclient
+  - python-keystoneclient
+  - python-neutronclient
+  - python-novaclient
+  - python-openstackclient
+  - python-swiftclient
+  - python-troveclient
 
 # Name of the virtual env to deploy into
 cloudkitty_venv_bin: "{{ cloudkitty_venv_dir }}/bin"
@@ -65,4 +104,4 @@ cloudkitty_control_exchange: openstack
 cloudkitty_api_host_ip: 0.0.0.0
 # Host port serving the API. (integer value)
 cloudkitty_api_port: 8889
-cloudkitty_database_connection: "mysql+pymysql://root:secrete@127.0.0.1/cloudkitty?charset=utf8"
+cloudkitty_database_connection: "mysql+pymysql://{{ cloudkitty_galera_user }}:{{ cloudkitty_galera_password }}@{{ cloudkitty_galera_address }}/{{ cloudkitty_galera_database }}?charset=utf8"
