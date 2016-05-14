@@ -74,7 +74,7 @@ cloudkitty_api_paste_ini_overrides: {}
 cloudkitty_service_names: []
 
 cloudkitty_pip_packages:
-  - "git+{{ cloudkitty_git_repo }}@{{ cloudkitty_git_install_branch }}#egg=cloudkitty"
+  - cloudkitty
   - tooz
   - msgpack-python
   - keystonemiddleware
